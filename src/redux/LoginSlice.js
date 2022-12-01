@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchContacts, addContact, deleteContact } from './contactOperation';
+import { addUser } from '../redux/userOperation';
 
 const handlePending = state => {
   state.isLoading = true;
@@ -10,43 +10,27 @@ const handleRejected = (state, action) => {
 };
 
 const loginSlice = createSlice({
-  name: 'contacts',
+  name: 'login',
   initialState: {
     items: [],
     isLoading: false,
     error: null,
   },
   extraReducers: {
-    [fetchContacts.pending]: handlePending,
-    [addContact.pending]: handlePending,
-    [deleteContact.pending]: handlePending,
+    [addUser.pending]: handlePending,
 
-    [fetchContacts.rejected]: handleRejected,
-    [addContact.rejected]: handleRejected,
-    [deleteContact.rejected]: handleRejected,
+    [addUser.rejected]: handleRejected,
 
-    [fetchContacts.fulfilled](state, action) {
-      state.isLoading = false;
-      state.error = null;
-      state.items = action.payload;
-    },
-    [addContact.fulfilled](state, action) {
+    [addUser.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
       state.items.push({
-        id: action.payload.id,
         name: action.payload.name,
-        phone: action.payload.phone,
+        email: action.payload.email,
+        password: action.payload.password,
       });
-    },
-    [deleteContact.fulfilled](state, action) {
-      state.isLoading = false;
-      state.error = null;
-      state.items = state.items.filter(
-        contact => contact.id !== action.payload.id
-      );
     },
   },
 });
 
-export const contactReducer = loginSlice.reducer;
+export const loginReducer = loginSlice.reducer;
