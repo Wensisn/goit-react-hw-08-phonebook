@@ -1,6 +1,5 @@
 import { Suspense } from 'react';
 import { useSelector } from 'react-redux';
-import { Outlet } from 'react-router-dom';
 import { getIsLoggenIn } from '../../redux/auth/selectors';
 import { UserMenu } from '../UserMenu/UserMenu';
 import { Container, Header, Link, Nav, Block } from './appBar.styled';
@@ -24,9 +23,7 @@ export const AppBar = () => {
           {!isLoggenIn && <Link to="register">Sign Up</Link>}
         </Nav>
       </Header>
-      <Suspense fallback={<div>Loading page...</div>}>
-        {/* <Outlet /> */}
-      </Suspense>
+      <Suspense fallback={<div>Loading page...</div>}></Suspense>
     </Container>
   );
 };

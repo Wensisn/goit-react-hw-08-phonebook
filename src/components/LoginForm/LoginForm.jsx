@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { nanoid } from 'nanoid';
-// import { selectLogin } from '../redux/auth-selectors';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { loginUser } from '../../redux/auth/operation';
 import { useNavigate } from 'react-router-dom';
 
@@ -23,24 +22,8 @@ export const LoginForm = () => {
   const emailInputId = nanoid();
   const passwordInputId = nanoid();
 
-  // const isExistNumber = email => {
-  //   return items.some(item => item.email === email);
-  // };
-
-  // const isExistPassword = password => {
-  //   return items.some(item => item.password === password);
-  // };
-
   const handleFormSubmit = event => {
     event.preventDefault();
-    // if (isExistNumber(email)) {
-    //   alert(`${email} is already in number.`);
-    //   return;
-    // }
-    // if (isExistPassword(password)) {
-    //   alert(`${password} is already in number.`);
-    //   return;
-    // }
     dispatch(loginUser({ email, password }));
     resetForm();
     navigate('/contacts', { replace: true });
