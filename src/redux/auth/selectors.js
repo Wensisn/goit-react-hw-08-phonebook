@@ -1,8 +1,13 @@
-import { createSelector } from '@reduxjs/toolkit';
+export const getIsLoggenIn = state => state.auth.isLoggenIn;
 
-export const selectLogin = state => state.login;
+export const getUsername = state => state.auth.user.name;
 
-export const selectFilter = state => state.filter;
+const authSelectors = {
+  getIsLoggenIn,
+  getUsername,
+};
+
+export default authSelectors;
 
 // export const selectVisibleTasks = createSelector(
 //   [selectContacts, selectFilter],
