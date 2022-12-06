@@ -3,6 +3,7 @@ import { getIsLoggenIn } from 'redux/auth/selectors';
 import { TodosList } from '../components/TodosList/TodosList';
 import { TodosForm } from '../components/TodosForm/TodosForm';
 import { Filter } from '../components/Filter/Filter';
+import { Indent } from '../components/TodosList/todosList.styled';
 
 export const Contacts = () => {
   const isLoggenIn = useSelector(getIsLoggenIn);
@@ -11,6 +12,7 @@ export const Contacts = () => {
       {isLoggenIn && <TodosForm />}
       {isLoggenIn && <Filter />}
       {isLoggenIn && <TodosList />}
+      <Indent />
     </>
   );
 };

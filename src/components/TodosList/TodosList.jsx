@@ -15,19 +15,21 @@ export const TodosList = () => {
   const filteredContacts = useSelector(selectVisibleTasks);
 
   return (
-    <TodoBosx>
+    <>
       {filteredContacts.length > 0 && (
-        <TodoList>
-          {filteredContacts.map(item => (
-            <TodosItem
-              key={item.id}
-              id={item.id}
-              name={item.name}
-              number={item.phone}
-            />
-          ))}
-        </TodoList>
+        <TodoBosx>
+          <TodoList>
+            {filteredContacts.map(item => (
+              <TodosItem
+                key={item.id}
+                id={item.id}
+                name={item.name}
+                number={item.phone}
+              />
+            ))}
+          </TodoList>
+        </TodoBosx>
       )}
-    </TodoBosx>
+    </>
   );
 };

@@ -58,8 +58,8 @@ export const SignUpForm = () => {
             placeholder="Email"
             type="email"
             name="email"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
             required
-            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             value={email}
             id={emailInputId}
             onChange={e => setEmail(e.currentTarget.value)}
@@ -70,8 +70,9 @@ export const SignUpForm = () => {
             placeholder="Password"
             type="password"
             name="password"
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
             required
-            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+            title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"
             value={password}
             id={passwordInputId}
             onChange={e => setPassword(e.currentTarget.value)}

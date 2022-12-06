@@ -53,3 +53,6 @@ export const TodoButton = styled.button`
   box-shadow: 4px 4px 60px rgb(0 0 0 / 20%);
   border: none;
 `;
+export const Indent = styled.div`
+  margin-top: 500px;
+`;
