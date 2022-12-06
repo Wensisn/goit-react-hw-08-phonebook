@@ -9,7 +9,6 @@ import {
   Form,
   Label,
   Input,
-  Name,
   Button,
   Text,
 } from '../LoginForm/loginForm.styled';
