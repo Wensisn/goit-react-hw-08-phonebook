@@ -6,13 +6,28 @@ import {
   fetchCurrentUser,
 } from './operation';
 
-// const handlePending = state => {
-//   state.isLoading = true;
-// };
-// const handleRejected = (state, action) => {
-//   state.isLoading = false;
-//   state.error = action.payload;
-// };
+const signupUserRuducer = (state, action) => {
+  state.user = action.payload.user;
+  state.token = action.payload.token;
+  state.isLoggenIn = true;
+};
+
+const loginUserRuducer = (state, action) => {
+  state.user = action.payload.user;
+  state.token = action.payload.token;
+  state.isLoggenIn = true;
+};
+
+const logOutUserRuducer = (state, action) => {
+  state.user = { name: null, email: null };
+  state.token = null;
+  state.isLoggenIn = false;
+};
+
+const fetchCurrentUserRuducer = (state, action) => {
+  state.user = action.payload;
+  state.isLoggenIn = true;
+};
 
 const initialState = {
   user: { name: null, email: null },
@@ -23,27 +38,12 @@ const initialState = {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  extraReducers: {
-    [signupUser.fulfilled](state, action) {
-      state.user = action.payload.user;
-      state.token = action.payload.token;
-      state.isLoggenIn = true;
-    },
-    [loginUser.fulfilled](state, action) {
-      state.user = action.payload.user;
-      state.token = action.payload.token;
-      state.isLoggenIn = true;
-    },
-    [logOutUser.fulfilled](state, action) {
-      state.user = { name: null, email: null };
-      state.token = null;
-      state.isLoggenIn = false;
-    },
-    [fetchCurrentUser.fulfilled](state, action) {
-      state.user = action.payload;
-      state.isLoggenIn = true;
-    },
-  },
+  extraReducers: builder =>
+    builder
+      .addCase(signupUser.fulfilled, signupUserRuducer)
+      .addCase(loginUser.fulfilled, loginUserRuducer)
+      .addCase(logOutUser.fulfilled, logOutUserRuducer)
+      .addCase(fetchCurrentUser.fulfilled, fetchCurrentUserRuducer),
 });
 
 export const authReducer = authSlice.reducer;

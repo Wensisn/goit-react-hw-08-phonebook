@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const TodoBosx = styled.div`
+export const ContactBosx = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -8,14 +8,14 @@ export const TodoBosx = styled.div`
   margin-top: 30px;
 `;
 
-export const TodoList = styled.ul`
+export const ContactList = styled.ul`
   display: flex;
   flex-direction: column;
   padding: 0;
   gap: 20px;
 `;
 
-export const TodoItem = styled.li`
+export const ContactItem = styled.li`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,12 +28,12 @@ export const TodoItem = styled.li`
   list-style-type: none;
 `;
 
-export const TodoBoxsInfo = styled.div`
+export const ContactBoxsInfo = styled.div`
   padding: 20px;
   display: flex;
 `;
 
-export const TodoInfo = styled.p`
+export const ContactInfo = styled.p`
   display: flex;
   justify-content: center;
   text-decoration: none;
@@ -43,7 +43,7 @@ export const TodoInfo = styled.p`
   font-size: 18px;
 `;
 
-export const TodoButton = styled.button`
+export const ContactButton = styled.button`
   border-radius: 5000px;
   background: transparent;
   color: #fff;

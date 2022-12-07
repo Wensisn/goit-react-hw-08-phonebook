@@ -9,21 +9,22 @@ export const AppBar = () => {
   return (
     <Container>
       <Header>
-        <Nav>
-          {isLoggenIn && (
-            <Block>
-              <Link to="contacts">Contacts</Link>
-            </Block>
-          )}
-          {isLoggenIn && <UserMenu />}
-          <Link to="/" end>
-            Home
-          </Link>
-          {!isLoggenIn && <Link to="login">Log In</Link>}
-          {!isLoggenIn && <Link to="register">Sign Up</Link>}
-        </Nav>
+        <Suspense fallback={<div>Loading page...</div>}>
+          <Nav>
+            {isLoggenIn && (
+              <Block>
+                <Link to="contacts">Contacts</Link>
+              </Block>
+            )}
+            {isLoggenIn && <UserMenu />}
+            <Link to="/" end>
+              Home
+            </Link>
+            {!isLoggenIn && <Link to="login">Log In</Link>}
+            {!isLoggenIn && <Link to="register">Sign Up</Link>}
+          </Nav>
+        </Suspense>
       </Header>
-      <Suspense fallback={<div>Loading page...</div>}></Suspense>
     </Container>
   );
 };

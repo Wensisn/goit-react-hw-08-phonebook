@@ -1,15 +1,15 @@
 import { createSelector } from '@reduxjs/toolkit';
 
-export const selectContacts = state => state.todos;
+export const selectContacts = state => state.contacts;
 
 export const selectFilter = state => state.filter;
 
 export const selectVisibleTasks = createSelector(
   [selectContacts, selectFilter],
-  (todos, filter) => {
+  (contacts, filter) => {
     const normolizedFilter = filter.toLowerCase();
 
-    return todos.items.filter(item =>
+    return contacts.items.filter(item =>
       item.name.toLowerCase().includes(normolizedFilter)
     );
   }

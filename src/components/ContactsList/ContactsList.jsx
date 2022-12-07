@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { TodosItem } from '../TodosItem/TodosItem';
-import { TodoList, TodoBosx } from './todosList.styled';
-import { allContacts } from '../../redux/todos/operation';
-import { selectVisibleTasks } from '../../redux/todos/selectors';
+import { ContactsItem } from '../ContactsItem/ContactsItem';
+import { ContactList, ContactBosx } from './contactsList.styled';
+import { allContacts } from '../../redux/contacts/operation';
+import { selectVisibleTasks } from '../../redux/contacts/selectors';
 import { useEffect } from 'react';
 
-export const TodosList = () => {
+export const ContactsList = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -17,18 +17,18 @@ export const TodosList = () => {
   return (
     <>
       {filteredContacts.length > 0 && (
-        <TodoBosx>
-          <TodoList>
+        <ContactBosx>
+          <ContactList>
             {filteredContacts.map(item => (
-              <TodosItem
+              <ContactsItem
                 key={item.id}
                 id={item.id}
                 name={item.name}
-                number={item.phone}
+                number={item.number}
               />
             ))}
-          </TodoList>
-        </TodoBosx>
+          </ContactList>
+        </ContactBosx>
       )}
     </>
   );

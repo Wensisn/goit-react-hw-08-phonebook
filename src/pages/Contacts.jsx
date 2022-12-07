@@ -1,17 +1,19 @@
 import { useSelector } from 'react-redux';
 import { getIsLoggenIn } from 'redux/auth/selectors';
-import { TodosList } from '../components/TodosList/TodosList';
-import { TodosForm } from '../components/TodosForm/TodosForm';
+import { ContactsList } from '../components/ContactsList/ContactsList';
+import { ContactsForm } from '../components/ContactsForm/ContactsForm';
 import { Filter } from '../components/Filter/Filter';
-import { Indent } from '../components/TodosList/todosList.styled';
+import { Indent } from '../components/ContactsList/contactsList.styled';
+import { Loader } from 'components/Loader/Loader';
 
 export const Contacts = () => {
   const isLoggenIn = useSelector(getIsLoggenIn);
   return (
     <>
-      {isLoggenIn && <TodosForm />}
+      {isLoggenIn && <ContactsForm />}
       {isLoggenIn && <Filter />}
-      {isLoggenIn && <TodosList />}
+      {isLoggenIn && <ContactsList />}
+      {!isLoggenIn && <Loader />}
       <Indent />
     </>
   );

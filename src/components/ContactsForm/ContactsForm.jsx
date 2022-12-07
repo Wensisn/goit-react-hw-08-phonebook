@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { nanoid } from 'nanoid';
-import { selectContacts } from '../../redux/todos/selectors';
+import { selectContacts } from '../../redux/contacts/selectors';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from '../../redux/todos/operation';
+import { addContact } from '../../redux/contacts/operation';
 
 import {
   SectionForm,
@@ -11,9 +11,9 @@ import {
   Input,
   Button,
   Text,
-} from './todosForm.styled';
+} from './contactsForm.styled';
 
-export const TodosForm = () => {
+export const ContactsForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const { items } = useSelector(selectContacts);
