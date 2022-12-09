@@ -58,8 +58,12 @@ export const Href = styled(Link)`
   }
 `;
 
-export const Container = styled.div``;
+export const Background = styled.div`
+background: linear-gradient(45deg, #fc466b, #3f5efb);
+`;
 
 export const Block = styled.div`
   margin-right: 200px;
 `;
+
+

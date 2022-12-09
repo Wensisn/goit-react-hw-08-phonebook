@@ -2,7 +2,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { logOutUser } from '../../redux/auth/operation';
 import { getUsername } from '../../redux/auth/selectors';
-import { Container, Span, Button } from './UserMenu.styled';
+import { Span } from './UserMenu.styled';
+
+import Button from '@mui/material/Button';
+import PersonPinIcon  from '@mui/icons-material/AccountCircle';
 
 export const UserMenu = () => {
   const navigate = useNavigate();
@@ -16,11 +19,12 @@ export const UserMenu = () => {
   };
 
   return (
-    <Container>
-      <Span>Welcome ,{name}</Span>
-      <Button type="button" onClick={handleFormSubmit}>
+   <>
+      <Span>Welcome ,{name} <PersonPinIcon /></Span>
+      <Button sx={{ my: 2, color: 'white', display: 'block' }}
+ variant="outlined" onClick={handleFormSubmit}>
         Go out
       </Button>
-    </Container>
+      </>
   );
 };
