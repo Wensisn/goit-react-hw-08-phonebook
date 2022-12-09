@@ -3,13 +3,13 @@ import { nanoid } from 'nanoid';
 import { useDispatch } from 'react-redux';
 import { signupUser } from '../../redux/auth/operation';
 import { useNavigate } from 'react-router-dom';
+import Button from '@mui/material/Button';
 
 import {
   SectionForm,
   Form,
   Label,
   Input,
-  Button,
   Text,
 } from '../LoginForm/loginForm.styled';
 
@@ -77,7 +77,7 @@ export const SignUpForm = () => {
             onChange={e => setPassword(e.currentTarget.value)}
           />
         </Label>
-        <Button type="submit">Sign Up</Button>
+        <Button variant="contained" type="submit">Sign Up</Button>
       </Form>
     </SectionForm>
   );

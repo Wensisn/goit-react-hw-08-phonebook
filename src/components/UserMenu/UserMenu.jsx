@@ -5,7 +5,7 @@ import { getUsername } from '../../redux/auth/selectors';
 import { Span } from './UserMenu.styled';
 
 import Button from '@mui/material/Button';
-import PersonPinIcon  from '@mui/icons-material/AccountCircle';
+import PersonPinIcon from '@mui/icons-material/AccountCircle';
 
 export const UserMenu = () => {
   const navigate = useNavigate();
@@ -19,12 +19,17 @@ export const UserMenu = () => {
   };
 
   return (
-   <>
-      <Span>Welcome ,{name} <PersonPinIcon /></Span>
-      <Button sx={{ my: 2, color: 'white', display: 'block' }}
- variant="outlined" onClick={handleFormSubmit}>
+    <>
+      <Span>
+        Welcome ,{name} <PersonPinIcon sx={{ fontSize: 40 }} />
+      </Span>
+      <Button
+        sx={{ my: 2, color: 'white', display: 'block' }}
+        variant="outlined"
+        onClick={handleFormSubmit}
+      >
         Go out
       </Button>
-      </>
+    </>
   );
 };

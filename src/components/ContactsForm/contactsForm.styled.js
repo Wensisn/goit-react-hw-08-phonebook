@@ -27,12 +27,10 @@ export const Form = styled.form`
   position: relative;
   transition: all 0.2s ease-in-out;
 `;
-export const Text = styled.p`
-  font-weight: 500;
-  color: #fff;
-  opacity: 0.7;
-  font-size: 1.4rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+export const Box = styled.div`
+  display: flex;
+  margin-top: 12px;
+  margin-bottom: 12px;
 `;
 
 export const Input = styled.input`

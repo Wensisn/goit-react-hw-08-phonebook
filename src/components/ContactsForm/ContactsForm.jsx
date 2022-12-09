@@ -3,14 +3,20 @@ import { nanoid } from 'nanoid';
 import { selectContacts } from '../../redux/contacts/selectors';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from '../../redux/contacts/operation';
-
+import Typography from '@mui/material/Typography';
+import ContactsIcon from '@mui/icons-material/Contacts';
+import {
+  ifSuccessfulAdditionAlert,
+  ifDublicateNameAlert,
+  ifDublicateNumberAlert,
+} from '../../notiflix';
 import {
   SectionForm,
   Form,
   Label,
   Input,
   Button,
-  Text,
+  Box,
 } from './contactsForm.styled';
 
 export const ContactsForm = () => {
@@ -34,14 +40,15 @@ export const ContactsForm = () => {
   const handleFormSubmit = event => {
     event.preventDefault();
     if (isExistName(name)) {
-      alert(`${name} is already in name.`);
+      ifDublicateNameAlert({ name });
       return;
     }
     if (isExistNumber(number)) {
-      alert(`${number} is already in number.`);
+      ifDublicateNumberAlert({ number });
       return;
     }
     dispatch(addContact({ id: nanoid(), name, number }));
+    ifSuccessfulAdditionAlert();
     resetForm();
   };
 
@@ -52,8 +59,26 @@ export const ContactsForm = () => {
 
   return (
     <SectionForm>
-      <Text>Contact book</Text>
-
+      <Box>
+        <ContactsIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+        <Typography
+          variant="h6"
+          noWrap
+          component="a"
+          href="/"
+          sx={{
+            mr: 2,
+            display: { xs: 'none', md: 'flex' },
+            fontFamily: 'monospace',
+            fontWeight: 700,
+            letterSpacing: '.3rem',
+            color: 'inherit',
+            textDecoration: 'none',
+          }}
+        >
+          Contact Book
+        </Typography>
+      </Box>
       <Form onSubmit={handleFormSubmit}>
         <Label htmlFor={nameInputId}>
           <Input

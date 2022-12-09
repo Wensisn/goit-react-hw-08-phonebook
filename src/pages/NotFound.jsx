@@ -1,5 +1,5 @@
 import { HomePages } from 'components/HomePages/HomePages';
 
-export const Home = () => {
+export const NotFound = () => {
   return <HomePages />;
 };

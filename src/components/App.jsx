@@ -2,14 +2,17 @@ import { Routes, Route } from 'react-router-dom';
 import { Login } from '../pages/Login';
 import { SignUp } from '../pages/SignUp';
 import { Contacts } from '../pages/Contacts';
-import { Layout } from './Layout/Layout';
-import {HomePages} from './Home/Home'
+import { Home } from '../pages/Home';
+import { NotFound } from '../pages/NotFound';
+import { getIsLoggenIn } from '../redux/auth/selectors';
 import { fetchCurrentUser } from '../redux/auth/operation';
-import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { ResponsiveAppBar } from './ResponsiveAppBar/ResponsiveAppBar';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, Suspense } from 'react';
 
 export const App = () => {
   const distpath = useDispatch();
+  const isLoggenIn = useSelector(getIsLoggenIn);
 
   useEffect(() => {
     distpath(fetchCurrentUser());
@@ -17,14 +20,18 @@ export const App = () => {
 
   return (
     <>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route path="home" element={<HomePages />} />
+      <ResponsiveAppBar />
+      <Suspense fallback={<div>h</div>}>
+        <Routes>
+          <Route index element={<Home />} />
+          {isLoggenIn && <Route index element={<Contacts />} />}
+          <Route path="home" exact element={<Home />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<SignUp />} />
           <Route path="contacts" element={<Contacts />} />
-        </Route>
-      </Routes>
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
     </>
   );
 };

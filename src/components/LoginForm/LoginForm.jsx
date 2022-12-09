@@ -5,14 +5,7 @@ import { loginUser } from '../../redux/auth/operation';
 import { useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button';
 
-import {
-  SectionForm,
-  Form,
-  Label,
-  Input,
-  // Button,
-  Text,
-} from './loginForm.styled';
+import { SectionForm, Form, Label, Input, Text } from './loginForm.styled';
 
 export const LoginForm = () => {
   const [email, setEmail] = useState('');
@@ -64,7 +57,9 @@ export const LoginForm = () => {
             onChange={e => setPassword(e.currentTarget.value)}
           />
         </Label>
-        <Button variant="contained" type="submit">Login</Button>
+        <Button variant="contained" type="submit">
+          Login
+        </Button>
       </Form>
     </SectionForm>
   );
