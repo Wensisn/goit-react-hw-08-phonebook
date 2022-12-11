@@ -1,24 +1,29 @@
 import { Component } from 'react';
 import { ThreeDots } from 'react-loader-spinner';
-import { Boks } from './loader.styled';
+import Box from '@mui/material/Box';
 
 export class Loader extends Component {
   render() {
     return (
-      <>
-        <Boks>
-          <ThreeDots
-            height="80"
-            width="500"
-            radius="9"
-            color="#violet"
-            ariaLabel="three-dots-loading"
-            wrapperStyle={{}}
-            wrapperClassName=""
-            visible={true}
-          />
-        </Boks>
-      </>
+      <Box
+        sx={{
+          display: `flex`,
+          justifyContent: `center`,
+          marginTop: `100px`,
+          marginBottom: `850px`,
+        }}
+      >
+        <ThreeDots
+          height="80"
+          width="500"
+          radius="9"
+          color="#4d4dff"
+          ariaLabel="three-dots-loading"
+          wrapperStyle={{}}
+          wrapperClassName=""
+          visible={true}
+        />
+      </Box>
     );
   }
 }

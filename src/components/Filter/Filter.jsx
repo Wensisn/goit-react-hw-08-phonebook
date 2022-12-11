@@ -1,7 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { onChangeFilter } from '../../redux/filter/slice';
 import { nanoid } from 'nanoid';
-import { Boks, Text, Label, Input } from './filter.styled';
+
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
 
 export const Filter = () => {
   const dispatch = useDispatch();
@@ -14,18 +16,24 @@ export const Filter = () => {
   };
 
   return (
-    <Boks>
-      <Label htmlFor={filterInputId}>
-        <Text>Search for contacts</Text>
-        <Input
-          placeholder="Search for contacts"
-          type="text"
-          name="filter"
-          id={filterInputId}
-          value={filter}
-          onChange={handleFilterChange}
-        />
-      </Label>
-    </Boks>
+    <Box
+      sx={{
+        width: 500,
+        maxWidth: '100%',
+        display: `flex`,
+        justifyContent: `center`,
+        background: ` rgba(255, 255, 255, 0.3)`,
+      }}
+    >
+      <TextField
+        fullWidth
+        label="Search for contacts"
+        type="text"
+        name="filter"
+        id={filterInputId}
+        value={filter}
+        onChange={handleFilterChange}
+      />
+    </Box>
   );
 };

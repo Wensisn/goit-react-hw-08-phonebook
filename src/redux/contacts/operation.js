@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ifContactDeletedAlert } from '../../notiflix';
+import { ifContactDeletedAlert, ifErrorAlert } from '../../notiflix';
 
 export const allContacts = createAsyncThunk(
   'todos/allContacts',
@@ -10,7 +10,7 @@ export const allContacts = createAsyncThunk(
       const response = await axios.get('/contacts');
       return response.data;
     } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+      return thunkAPI.rejectWithValue(ifErrorAlert());
     }
   }
 );
@@ -23,7 +23,7 @@ export const addContact = createAsyncThunk(
       const response = await axios.post('/contacts', { id, name, number });
       return response.data;
     } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+      return thunkAPI.rejectWithValue(ifErrorAlert());
     }
   }
 );
@@ -36,7 +36,7 @@ export const deleteContact = createAsyncThunk(
       ifContactDeletedAlert();
       return response.data;
     } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+      return thunkAPI.rejectWithValue(ifErrorAlert());
     }
   }
 );
