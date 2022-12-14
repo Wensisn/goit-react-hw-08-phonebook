@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { ifErrorAlert } from '../../notiflix';
+import { ifErrorLoginAlert , ifErrorSigUpAlert , ifErrorAlert} from '../../notiflix';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
@@ -27,7 +27,7 @@ export const signupUser = createAsyncThunk(
       setAuthHeader(response.data.token);
       return response.data;
     } catch (e) {
-      return thunkAPI.rejectWithValue(ifErrorAlert());
+      return thunkAPI.rejectWithValue(ifErrorSigUpAlert());
     }
   }
 );
@@ -44,7 +44,7 @@ export const loginUser = createAsyncThunk(
       setAuthHeader(response.data.token);
       return response.data;
     } catch (e) {
-      return thunkAPI.rejectWithValue(ifErrorAlert());
+      return thunkAPI.rejectWithValue(ifErrorLoginAlert());
     }
   }
 );

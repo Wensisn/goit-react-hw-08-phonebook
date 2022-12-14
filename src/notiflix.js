@@ -32,6 +32,14 @@ function ifValidPasswordAlert() {
   Notiflix.Notify.failure('Fill in the password line.');
 }
 
+function ifErrorLoginAlert() {
+  Notiflix.Notify.failure('There is no registered account via this email.');
+}
+
+function ifErrorSigUpAlert() {
+  Notiflix.Notify.failure('This email is already used.');
+}
+
 function ifErrorAlert() {
   Notiflix.Notify.failure('Error 404.');
 }
@@ -43,6 +51,8 @@ export {
   ifDublicateNameAlert,
   ifDublicateNumberAlert,
   ifContactDeletedAlert,
+  ifErrorLoginAlert,
+  ifErrorSigUpAlert,
   ifErrorAlert,
   ifValidEmailAlert,
   ifValidPasswordAlert,
